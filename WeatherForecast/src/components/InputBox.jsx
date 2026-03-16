@@ -2,7 +2,7 @@ import React from "react";
 
 // https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,wind_speed_10m
 
-const InputBox = ({ City, setCity }) => {
+const InputBox = ({ City, setCity, useWeatherInfo, data }) => {
   return (
     <div className="flex">
       <input

@@ -2,14 +2,18 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 function useWeatherInfo(City) {
-  const [data, setData] = useState({});
+const [data, setData] = useState({});
   useEffect(() => {
     fetch(
-      `https://geocoding-api.open-meteo.com/v1/search?name=${City}&count=1&language=en&format=json`,
-    )
-      .then((res) => res.json())
-      .then((res) => setData(res.results[0].latitude))
-      .then((res) => setData(res.results[0].longitude));
+      `https://geocoding-api.open-meteo.com/v1/search?name=${City}&count=5&language=en&format=json`,
+    ).then((res) => {
+      res.json()
+    const first = res.results?.[0];
+
+    setData({
+      latitude: first?.latitude ?? null,
+      longitude: first?.longitude ?? null,
+    });}
   }, [City]);
   console.log(data);
   return data;
